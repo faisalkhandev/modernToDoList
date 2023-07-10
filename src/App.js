@@ -26,7 +26,7 @@ function Logo() {
   );
 }
 function Form() {
-  const { descrip, setDescription } = useState("");
+  const [descrip, setDescription] = useState("");
 
   function handleAddBtn(e) {
     e.preventDefault();
