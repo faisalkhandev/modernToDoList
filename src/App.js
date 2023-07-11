@@ -26,15 +26,15 @@ function Logo() {
   );
 }
 function Form() {
-  const [descrip, setDescription] = useState("");
+  const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
 
   function handleAddBtn(e) {
     e.preventDefault();
 
-    if (!descrip) return;
+    if (!description) return;
 
-    const newItems = { descrip, quantity, packed: false, id: Date.now() };
+    const newItems = { description, quantity, packed: false, id: Date.now() };
     console.log(newItems);
 
     setDescription("");
@@ -64,7 +64,7 @@ function Form() {
       <input
         type="text"
         placeholder="Items...."
-        value={descrip}
+        value={description}
         onChange={(e) => {
           console.log(e.target.val);
           setDescription(e.target.value);
