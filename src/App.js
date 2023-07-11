@@ -27,9 +27,18 @@ function Logo() {
 }
 function Form() {
   const [descrip, setDescription] = useState("");
+  const [quantity, setQuantity] = useState(1);
 
   function handleAddBtn(e) {
     e.preventDefault();
+
+    if (!descrip) return;
+
+    const newItems = { descrip, quantity, packed: false, id: Date.now() };
+    console.log(newItems);
+
+    setDescription("");
+    setQuantity(1);
   }
   // function handleOnChange(e) {
   //   setDescription(e.target.value);
@@ -37,7 +46,15 @@ function Form() {
 
   return (
     <form className="add-form" onSubmit={handleAddBtn}>
-      <select name="" id="">
+      <select
+        name=""
+        id={quantity}
+        value={quantity}
+        onChange={(e) => {
+          console.log(e.target.value);
+          setQuantity(Number(e.target.value));
+        }}
+      >
         {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
           <option value={num} key={num}>
             {num}
@@ -48,7 +65,10 @@ function Form() {
         type="text"
         placeholder="Items...."
         value={descrip}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={(e) => {
+          console.log(e.target.val);
+          setDescription(e.target.value);
+        }}
       />
       <button>Add</button>
     </form>
