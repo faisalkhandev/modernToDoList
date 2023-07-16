@@ -28,6 +28,7 @@ function Logo() {
 function Form() {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [item, setItems] = useState([]);
 
   function handleAddBtn(e) {
     e.preventDefault();
