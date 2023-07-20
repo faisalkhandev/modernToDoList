@@ -8,7 +8,7 @@ const initialItems = [
 ];
 
 const App = () => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState([initialItems]);
 
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
@@ -39,6 +39,7 @@ function Logo() {
 function Form({ onAddItems }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [ase, setAse] = useState([]);
 
   function handleSubmitBtn(e) {
     e.preventDefault();
