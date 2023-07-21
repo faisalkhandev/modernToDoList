@@ -15,15 +15,27 @@ const App = () => {
   }
 
   function handleDeleteItem(id) {
-    console.log(id);
+    // console.log(id);
     setItems((items) => items.filter((item) => item.id !== id));
+  }
+
+  function handleCheckItem(id) {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
   }
 
   return (
     <div className="app">
       <Logo />
       <Form onAddItems={handleAddItems} />
-      <PackingList items={items} onDeleteItem={handleDeleteItem} />
+      <PackingList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onCheckItem={handleCheckItem}
+      />
       <Stats />
     </div>
   );
@@ -39,7 +51,7 @@ function Logo() {
 function Form({ onAddItems }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const [ase, setAse] = useState([]);
+  // const [ase, setAse] = useState([]);
 
   function handleSubmitBtn(e) {
     e.preventDefault();
@@ -88,21 +100,33 @@ function Form({ onAddItems }) {
     </form>
   );
 }
-function PackingList({ items, onDeleteItem }) {
+function PackingList({ items, onDeleteItem, onCheckItem }) {
   return (
     <div className="list">
       <ul>
         {items.map((item) => (
-          <Item items={item} onDeleteItem={onDeleteItem} key={item.id} />
+          <Item
+            items={item}
+            onDeleteItem={onDeleteItem}
+            onCheckItem={onCheckItem}
+            key={item.id}
+          />
         ))}
       </ul>
     </div>
   );
 }
 
-function Item({ items, onDeleteItem }) {
+function Item({ items, onDeleteItem, onCheckItem }) {
   return (
     <li>
+      <input
+        type="checkbox"
+        value={items.packed}
+        onChange={() => {
+          onCheckItem(items.id);
+        }}
+      />
       <span style={items.packed ? { textDecoration: "line-through" } : {}}>
         {items.quantity} {items.description}
       </span>
