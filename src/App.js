@@ -135,7 +135,7 @@ function Item({ items, onDeleteItem, onCheckItem }) {
 }
 
 function Stats({ items }) {
-  if (!items.length) return <em className="stats"> Add your tasks 🚀🚀</em>;
+  if (!items.length) return <em className="stats">Add your tasks 🚀🚀</em>;
 
   const numItems = items.length;
   const doneItems = items.filter((item) => item.packed).length;
