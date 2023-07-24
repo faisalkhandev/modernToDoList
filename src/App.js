@@ -26,6 +26,9 @@ const App = () => {
       )
     );
   }
+  function handleDelete() {
+    setItems([]);
+  }
 
   return (
     <div className="app">
@@ -35,6 +38,7 @@ const App = () => {
         items={items}
         onDeleteItem={handleDeleteItem}
         onCheckItem={handleCheckItem}
+        onClearList={handleDelete}
       />
       <Stats items={items} />
     </div>
@@ -99,7 +103,7 @@ function Form({ onAddItems }) {
     </form>
   );
 }
-function PackingList({ items, onDeleteItem, onCheckItem }) {
+function PackingList({ items, onDeleteItem, onCheckItem, onClearList }) {
   const [sortBy, setSortBy] = useState("input");
   let sortedItems;
 
@@ -133,6 +137,7 @@ function PackingList({ items, onDeleteItem, onCheckItem }) {
           <option value="description">sort by description</option>
           <option value="packed">sort by packed</option>
         </select>
+        <button onClick={onClearList}>Clear Tasks</button>
       </div>
     </div>
   );
