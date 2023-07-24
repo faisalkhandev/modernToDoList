@@ -134,6 +134,8 @@ function Item({ items, onDeleteItem, onCheckItem }) {
   );
 }
 
+/* Footer Section */
+
 function Stats({ items }) {
   if (!items.length) return <em className="stats">Add your tasks 🚀🚀</em>;
 
