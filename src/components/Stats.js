@@ -1,7 +1,7 @@
 import React from "react";
 
 /* Footer Section */
-export function Stats({ items }) {
+export default function Stats({ items }) {
   if (!items.length) return <em className="stats">Add your tasks 🚀🚀</em>;
 
   const numItems = items.length;

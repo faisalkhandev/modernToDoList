@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Item({ items, onDeleteItem, onCheckItem }) {
+export default function Item({ items, onDeleteItem, onCheckItem }) {
   return (
     <li>
       <input
